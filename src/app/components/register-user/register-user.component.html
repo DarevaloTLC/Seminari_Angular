@@ -1,0 +1,53 @@
+<div class="container mt-4">
+    <h2>Registre d'Usuari</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom:</label>
+        <input
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Introdueix el teu nom"
+        />
+        <div ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
+          El nom és obligatori.
+        </div>
+      </div>
+  
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Correu electrònic:</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Introdueix el teu correu"
+        />
+        <div ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
+          Correu electrònic no vàlid.
+        </div>
+      </div>
+  
+      <!-- Contraseña -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Contrasenya:</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Introdueix la contrasenya"
+        />
+        <div ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
+          La contrasenya ha de tenir almenys 6 caràcters.
+        </div>
+      </div>
+  
+      <!-- Botón de Registro -->
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrar</button>
+    </form>
+  </div>
+  

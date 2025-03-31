@@ -1,9 +1,10 @@
-@if(loggedin)
-{
-    <app-usuario></app-usuario>
-}
-@else  {
-    <app-login (exportLoggedIn)="getLoggedIn($event)"></app-login>
-}
+<div ngIf =" loggedIn; else loginTemplate">
+  <app-usuario></app-usuario>
+</div>
 
-<router-outlet />
+<ng-template #loginTemplate>
+  <app-login (exportLoggedIn)="getLoggedIn($event)"></app-login>
+  <p>No tens un compte? <a routerLink="/register">Registra't aquí</a></p>
+</ng-template>
+
+<router-outlet></router-outlet>
